@@ -1,6 +1,5 @@
 # Brad Rogers
 import random
-import math
 import time
 
 Inventory = [0, 0, 0, 0]
@@ -18,6 +17,8 @@ def main():
     print("------------------------Main Menu--------------------------")
     print("")
     print("Type 1 to Start")
+    print("")
+    print("")
     menu()
 
 def menu():
@@ -35,10 +36,10 @@ def intro():
     print("---------------------------------------------------------------------------")
     print("This first think you notice around you is the sound of the clock ticking,")
     print("As your eyes adjust to the darkness, you see that you are in the foyer of ")
-    print("a large house. ")
-    print("")
-    print("")
-    time.sleep(5)
+    print("a large house. Behind you is a door which appears to lead outside. There is")
+    print("a lock on the door and a note on the door that that says 'If you wish to leave")
+    print("then you must locate the key to this door.")
+    time.sleep(8)
     print(entrance())
 
 
@@ -56,6 +57,8 @@ def entrance():
     print("2. Go upstairs")
     print("3. Go down the hallway")
     print("4. Go into the dining room")
+    print("")
+    print("")
     menu = int(input(""))
     if menu == 1:
         livingroom()
@@ -83,6 +86,8 @@ def livingroom():
     print("2. Inspect the portrait")
     print("3. Inspect the fireplace")
     print("4. Go back to foyer")
+    print("")
+    print("")
     menu = int(input(""))
     if menu == 1:
         print("Aside from the picture and the fireplace, nothing stands out.")
@@ -119,13 +124,15 @@ def stairs():
     print("")
     print("------------------------------------------------------------------------------------")
     print("Looking upstairs you see a landing where moonlight filters through an old dirty window.")
-    print("Heading upstairs you hear the stairs creak under you feet, and your footsteps cause dust to")
+    print("continuing upwards you hear the stairs creak under you feet, and your footsteps cause dust to")
     print("swirl around in the moonlight. ")
     print("")
     print("")
     print("------------------------------------------------------------------------------------")
     print("1. Keep climbing ")
     print("2. Go back down")
+    print("")
+    print("")
     menu = int(input(""))
     if menu == 1:
         upstairs()
@@ -136,6 +143,13 @@ def stairs():
         stairs()
 
 def upstairs():
+    if Inventory [2] == 1:
+        if Inventory[3] == 1:
+            print("Putting both keys together you decide to leave the house, going down the stairs quickly. As you")
+            print("approach the front door you see the lock by the handle. Using the key you open the door and head")
+            print("outside. Once you get far enough away you turn around and see the house standing behind you.")
+            houseOutside()
+
     print("")
     print("")
     print("------------------------------------------------------------------------------------")
@@ -205,6 +219,8 @@ def library():
     print("2. Inspect the shelves")
     print("3. Leave the room")
     print("")
+    print("")
+    print("")
     menu = int(input(""))
     if menu == 1:
         print("Walking up to the table you see it is an old chessboard, the pieces look like they")
@@ -225,6 +241,8 @@ def library():
         print("2. Inspect the shelves")
         print("3. Leave the room")
         print("")
+        print("")
+        print("")
         menu = int(input(""))
         if menu == 1:
             print("")
@@ -244,6 +262,8 @@ def library():
             print("1. Inspect the table")
             print("2. Remove the book")
             print("3. Leave the room")
+            print("")
+            print("")
             menu = int(input(""))
             if menu == 1:
                 print("")
@@ -295,6 +315,8 @@ def hiddenRoom():
     print("1. Pull back the sheet")
     print("2. Inspect the room")
     print("3. Leave the room")
+    print("")
+    print("")
     menu = int(input(""))
     if menu == 1:
         print("Removing the sheet you see a collection of antique furniture hidden under a blanket. On top of the ")
@@ -303,7 +325,8 @@ def hiddenRoom():
         print("")
         print("------------------------------------------------------------------------------------")
         print("1. Read the note")
-
+        print("")
+        print("")
         menu = int(input(""))
         if menu == 1:
             print("")
@@ -376,58 +399,87 @@ def bathroom():
     print("")
     menu = int(input(""))
     if menu == 1:
-        print("The bathoom is in a state of disrepair, however it seems to be in good condition despite")
-        print("its age.")
+        print("The bathroom is in a state of disrepair, nothing about it stands out however")
+        print("")
         time.sleep(4)
         bathroom()
     elif menu == 2:
         print("Leaving the bathroom you return to the previous room.")
+        time.sleep(4)
         upstairs()
     else:
         bathroom()
 
 
 def secondBedroom():
-    print("")
-    print("")
-    print("------------------------------------------------------------------------------------")
-    print("This room appears to be a bedroom, there is a large bed in the center of the room, and on each side")
-    print("of the bed there is a door")
-    print("")
-    print("------------------------------------------------------------------------------------")
-    print("1. Inspect the bed")
-    print("2. Inspect the first door")
-    print("3. Inspect the second door")
-    print("4. Leave the room")
-    menu = int(input(""))
-    if menu == 1:
-        print("The bathoom is in a state of disrepair, however it seems to be in good condition despite")
-        print("its age.")
-        time.sleep(4)
-        bathroom()
-    elif menu == 2:
-        print("Leaving the bathroom you return to the previous room.")
-        upstairs()
-    elif menu == 3:
+    if Inventory[3] == 0:
         print("")
-    elif menu == 4:
         print("")
+        print("------------------------------------------------------------------------------------")
+        print("This room appears to be a bedroom, there is a large bed in the center of the room, and on each side")
+        print("of the bed there is a door")
+        print("")
+        print("")
+        print("------------------------------------------------------------------------------------")
+        print("1. Inspect the bed")
+        print("2. Inspect the first door")
+        print("3. Inspect the second door")
+        print("4. Leave the room")
+        print("")
+        print("")
+        menu = int(input(""))
+        if menu == 1:
+            print("The bed appears to be made, upon inspecting it closer there was a envelops shoved under the")
+            print("pillow. Opening the envelope reveals part of a key. Looking around the room revealing nothing else")
+            print("of value, you return to the other room.")
+            print("")
+            Inventory[3] = 1
+            upstairs()
+
+        elif menu == 2:
+            print("Opening the door reveals a closet filled with old clothes. After looking through the closet you")
+            print("do not find anything of value")
+            time.sleep(5)
+            secondBedroom()
+        elif menu == 3:
+            print("Opening the door on the far side of the bed reveals a closet filled with boxes. They appear to")
+            print("contain old newspapers.")
+            time.sleep(5)
+            secondBedroom()
+        elif menu == 4:
+            print("Leaving the room you return to the upstairs stairway.")
+            time.sleep(5)
+        else:
+            bathroom()
     else:
-        bathroom()
+        print("I have already explored that room, no need to go back in there.")
+        time.sleep(5)
+        upstairs()
 
 def thirdBedroom():
     print("")
     print("")
     print("------------------------------------------------------------------------------------")
-    print("")
-    print("")
+    print("Opening the door reveals a child's bedroom, there are old toys strewn about the floor and the bed")
+    print("appears to be too small for an adult. ")
     print("")
     print("------------------------------------------------------------------------------------")
-    print("1. Inspect the table")
+    print("1. Inspect the room")
     print("2. Return to the foyer")
     print("")
     print("")
     menu = int(input(""))
+    if menu == 1:
+        print("The room appears to be normal.")
+        time.sleep(5)
+        thirdBedroom()
+    elif menu == 2:
+        print("Leaving you return to the previous room.")
+        time.sleep(5)
+        upstairs()
+    else:
+        thirdBedroom()
+
 
 def dining():
     print("")
@@ -441,6 +493,8 @@ def dining():
     print("------------------------------------------------------------------------------------")
     print("1. Inspect the table")
     print("2. Return to the foyer")
+    print("")
+    print("")
     menu = int(input(""))
     if menu == 1:
         print("There are a bunch of antique plates and utensils set in a orderly fashion ")
@@ -464,6 +518,8 @@ def hall():
     print("------------------------------------------------------------------------------------")
     print("1. Enter the kitchen")
     print("2. Go further down the hall")
+    print("")
+    print("")
     menu = int(input(""))
     if menu == 1:
         kitchen()
@@ -486,6 +542,8 @@ def kitchen():
     print("1. Investigate the cabinets")
     print("2. Go to hallway")
     print("3. Enter the room")
+    print("")
+    print("")
     menu = int(input(""))
     if menu == 1:
         print("Opening the cabinets you see that they are filled with old cooking and dining utensils.")
@@ -510,6 +568,8 @@ def hallA():
     print("1. Enter the kitchen")
     print("2. Go further down the hall")
     print("3. Head to foyer")
+    print("")
+    print("")
     menu = int(input(""))
     if menu == 1:
         kitchen()
@@ -526,7 +586,7 @@ def porch():
     print("------------------------------------------------------------------------------------")
     print("Reaching the end of the hall and entering the room you see an old clock, and two open")
     print("doorways on either side. This part of the house appears to be in a state of disrepair,")
-    print("and the wood on the walls and the floors appears to be rotten.")
+    print("and the wood on the walls and the floors appear to be rotten.")
     print("")
     print("")
     print("------------------------------------------------------------------------------------")
@@ -534,6 +594,8 @@ def porch():
     print("2. Investigate the doorway on the right")
     print("3. Examine the clock")
     print("4. Return to the hallway")
+    print("")
+    print("")
     menu = int(input(""))
     if menu == 1:
         print("From the entrance you can see that this room used to be a laundry room, but the floor")
@@ -566,6 +628,8 @@ def porchA():
     print("2. Investigate the doorway on the right")
     print("3. Examine the clock")
     print("4. Return to the hallway")
+    print("")
+    print("")
     menu = int(input(""))
     if menu == 1:
         print("From the entrance you can see that this room used to be a laundry room, but the floor")
@@ -597,6 +661,8 @@ def sunroom():
     print("------------------------------------------------------------------------------------")
     print("1. Inspect the safe")
     print("2. Return to the hallway")
+    print("")
+    print("")
     menu = int(input(""))
     if menu == 1:
         if Inventory[0] == 1:
@@ -606,6 +672,8 @@ def sunroom():
             print("The safe appears to have a combination lock, would you like to input a password")
             print("1. for yes")
             print("2. for no")
+            print("")
+            print("")
             menu = int(input(""))
             if menu == 1:
                 print("input first digit")
@@ -635,8 +703,6 @@ def sunroom():
                     sunroom()
             else:
                 sunroom()
-
-
     elif menu == 2:
         sunroom()
     else:
@@ -729,15 +795,12 @@ def houseOutside():
     print("II7II77777I7I7III7II7II7777I77Z77777I7I7I77$$IIIIIIIIIIII7IIIIIIIIIIIIIIIIIII7777I777III7I?IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII$III7I7II7I77I77I777I$777I77777I77I7IIII7IIII8O77D8O$")
     print("")
     print("")
-    print("choice: ")
-    print("1. Go inside")
-    print("2. Look around outside")
+    print("")
+    print("1. Type 1 and hit enter to end game")
     menu = int(input(""))
     if menu == 1:
-        print("Trying the door reveals that it is locked")
-    elif menu == 2:
-        quit
+        print("Congratulations on completing the game!")
     else:
-        print("Input 1 or 2")
+        quit()
 
 main()
